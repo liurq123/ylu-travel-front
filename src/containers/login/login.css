@@ -1,0 +1,25 @@
+.titleCls{
+    text-align: center;
+}
+.bottomCls1{
+    float: left;
+    margin-left: 10px;
+}
+.bottomCls2{
+    float: right;
+    margin-right: 10px;
+}
+.outlogin{
+    margin-top: 20px;
+    margin-bottom: 20px;
+ }
+.outlogin img{
+    height: 20px;
+    width: 20px;
+    margin-left: 15px;
+}
+.check{
+    margin-left: 81px;
+    width: 150px;
+    height: 60px;
+}
