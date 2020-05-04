@@ -5,7 +5,7 @@ class Recommend extends Component{
     render() {
         return(
             <div>
-                <h2>我是推荐页面</h2>
+                <h2>我是推荐页面，对啊对啊</h2>
             </div>
         )
     }
