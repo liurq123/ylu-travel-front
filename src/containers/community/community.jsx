@@ -19,7 +19,7 @@ class Community extends Component{
         {icon:way,text:'攻略',link: '#'}]
 
     componentWillMount() {
-        console.log('我到community的了willmount')
+        console.log('我到community的willmount')
         var wid = document.body.clientWidth
         // console.log('js浏览器宽'+wid)
         var width = wid-60 + 'px'
