@@ -1,0 +1,78 @@
+import React, {Component} from 'react'
+import PropTypes from 'prop-types'
+
+
+
+
+class DelShowList extends Component{
+
+    static propTypes = {
+        data:PropTypes.array.isRequired
+    }
+
+    state = {
+        width:''
+    }
+
+    componentWillMount() {
+        console.log('我到showlist的了willmount')
+        var wid = document.body.clientWidth
+        // console.log('js浏览器宽'+wid)
+        var width = wid/2 - 20 +'px'
+        this.setState({
+            width:width
+        })
+    }
+
+    componentWillUpdate(nextProps, nextState, nextContext) {
+        console.log('我到了showlist的willupdate')
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        console.log('我到了showlist的didupdate')
+    }
+
+    componentDidMount() {
+        console.log('我到了showlist的didmount ')
+    }
+
+    render() {
+        const {data} = this.props
+        const len = data.length
+        console.log('len'+len)
+        var wid = this.state.width
+        return(
+            <div>
+                {
+                    data.map(function (item,index) {
+                        // console.log(index)
+                        if (index % 2 === 0){
+                            var url = 'http://localhost:3000/#/Del_listDetail/'+item.fid
+                            return (
+                                <div key={index} className='first' style={{ marginBottom:'3px',marginTop:'2px', float:'left',textAlign:'center',height:'160px',width:wid,borderWidth:'0px',borderStyle:'solid',borderRadius:'10px',borderColor:'rgb(255,255,255)',backgroundColor:'rgb(255,255,255)'}}>
+                                    <a href={url}><img className='fir_img' src={item.cover} style={{height:'100px',width:wid,borderRadius:'10px'}}/></a>
+                                    <p style={{overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap", margin:'0px 0px 2px 10px',textAlign:'left'}}>{item.title}</p>
+                                    <p style={{overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap",margin:'0px 0px 2px 10px',textAlign:'left',font:'normal 11px "宋体"'}}>{item.address}</p>
+                                    <p style={{overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap",margin:'0px 0px 2px 10px',textAlign:'left',fontSize:'17px',color:'rgb(255,0,0)'}}>￥{item.price}</p>
+                                </div>
+                            )
+                        }
+                        else {
+                            var url = 'http://localhost:3000/#/Del_listDetail/'+item.fid
+                            return (
+                                <div key={index} className='first' style={{ marginBottom:'3px',marginTop:'2px',float:'right',textAlign:'center',height:'160px',width:wid,borderWidth:'0px',borderStyle:'solid',borderRadius:'10px',borderColor:'rgb(255,255,255)',backgroundColor:'rgb(255,255,255)'}}>
+                                    <a href={url}><img className='fir_img' src={item.cover} style={{height:'100px',width:wid,borderRadius:'10px'}}/></a>
+                                    <p style={{overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap", margin:'0px 0px 2px 10px',textAlign:'left'}}>{item.title}</p>
+                                    <p style={{overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap",margin:'0px 0px 2px 10px',textAlign:'left',font:'normal 11px "宋体"'}}>{item.address}</p>
+                                    <p style={{overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap",margin:'0px 0px 2px 10px',textAlign:'left',fontSize:'17px',color:'rgb(255,0,0)'}}>￥{item.price}</p>
+                                </div>
+                            )
+                        }
+                    })}
+            </div>
+        )
+    }
+}
+
+export default DelShowList
+

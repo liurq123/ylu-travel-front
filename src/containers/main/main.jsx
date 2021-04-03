@@ -8,8 +8,12 @@ import Community from '../community/community'
 import Home from '../home/home'
 import Personal from '../personal/personal'
 import ListDetail from "../listDetail/listDetail";
-// import NavFooder from '../../components/nav-footer/nav-footer/'
+import DelListDetail from "../listDetail/delListDetail"
+import Comment from '../comment/comment'
+import Delcomment from '../comment/delcomment'
 import NavFooter from "../../components/nav-footer/nav-footer";
+import TravelNote from '../travelNote/travelNote'
+import TravelNoteDetail from '../travelnotDetail/travelnoteDetail'
 
 class Main extends Component {
 
@@ -40,10 +44,11 @@ class Main extends Component {
     render() {
         let cur_location =  this.props.location.pathname
         console.log("当前访问地址："+cur_location)
-        // const {username} = this.props
-        // if(!username){
-        //     return <Redirect to='/login'/>
-        // }
+        const {username} = this.props
+        // //试验开关。。。。。
+        if(!username){
+            return <Redirect to='/login'/>
+        }
         if (cur_location === '/'){
             return <Redirect to='/home/selected'/>
         }
@@ -65,6 +70,11 @@ class Main extends Component {
                     <Route path='/community' component={Community} />
                     <Route path='/personal' component={Personal}/>
                     <Route path='/listDetail/:id' component={ListDetail} />
+                    <Route path='/Del_listDetail/:id' component={DelListDetail}/>
+                    <Route path='/addComment' component={Comment} />
+                    <Route path='/addDelComment' component={Delcomment}/>
+                    <Route path='/addTravelNote/:id' component={TravelNote} />
+                    <Route path='/travelnoteDetail/:id' component={TravelNoteDetail} />
                     <Route component={NotFund} />
                 </Switch>
                 {

@@ -4,9 +4,9 @@ import {NavBar, Icon, Carousel, WingBlank, WhiteSpace, Card, Button} from 'antd-
 import {connect} from 'react-redux'
 
 import {detail} from '../../redux/actions'
-import {reqGet_CommentByTid} from '../../api/index'
+import {reqGet_DelCommentById} from '../../api/index'
 
-class ListDetail extends Component{
+class DelListDetail extends Component{
     state = {
         data :[],
         imgHeight:176,
@@ -27,8 +27,9 @@ class ListDetail extends Component{
 
     componentDidMount() {
         console.log('我到了listdetail的didmount')
-        this.props.detail({tid:this.props.match.params.id})
-        reqGet_CommentByTid({tid:this.props.match.params.id})
+        this.props.detail({fid:this.props.match.params.id})
+
+        reqGet_DelCommentById({fid:this.props.match.params.id})
             .then(r => {
                 var result = r.data;
                 this.setState({
@@ -53,7 +54,7 @@ class ListDetail extends Component{
     }
 
     toAddComment = () => {
-        this.props.history.push({pathname:'/addComment',query:{tid:this.props.match.params.id,title:this.props.Ddata.title}})
+        this.props.history.push({pathname:'/addDelComment',query:{fid:this.props.match.params.id,title:this.props.Ddata.title}})
     }
 
     render() {
@@ -69,31 +70,31 @@ class ListDetail extends Component{
                         ]}>Detail</NavBar>
 
 
-                    <Carousel
-                        autoplay={false}
-                        infinite
-                        beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
-                        afterChange={index => console.log('slide to', index)}
-                    >
-                        {this.state.data.map(val => (
-                            <a
-                                key={val}
-                                href="#"
-                                style={{ display: 'inline-block', width: '100%', height: this.state.imgHeight }}
-                            >
-                                <img
-                                    src={val}
-                                    alt=""
-                                    style={{ width: '100%', verticalAlign: 'top',borderRadius:'10px' }}
-                                    onLoad={() => {
-                                        // fire window resize event to change height
-                                        window.dispatchEvent(new Event('resize'));
-                                        this.setState({ imgHeight: 'auto' });
-                                    }}
-                                />
-                            </a>
-                        ))}
-                    </Carousel>
+                <Carousel
+                    autoplay={false}
+                    infinite
+                    beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
+                    afterChange={index => console.log('slide to', index)}
+                >
+                    {this.state.data.map(val => (
+                        <a
+                            key={val}
+                            href="#"
+                            style={{ display: 'inline-block', width: '100%', height: this.state.imgHeight }}
+                        >
+                            <img
+                                src={val}
+                                alt=""
+                                style={{ width: '100%', verticalAlign: 'top',borderRadius:'10px' }}
+                                onLoad={() => {
+                                    // fire window resize event to change height
+                                    window.dispatchEvent(new Event('resize'));
+                                    this.setState({ imgHeight: 'auto' });
+                                }}
+                            />
+                        </a>
+                    ))}
+                </Carousel>
 
                 <WingBlank size="lg">
 
@@ -168,4 +169,4 @@ class ListDetail extends Component{
 export default connect(
     state => ({Ddata:state.getDetail.Ddata,Dimg:state.getDetail.Dimg}),
     {detail}
-)(ListDetail)
+)(DelListDetail)

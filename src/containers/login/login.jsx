@@ -8,7 +8,7 @@ import {Redirect} from 'react-router-dom'
 import './login.css'
 import wechat from './img/wechat.png'
 import qq from './img/qq.png'
-import zfb from './img/zfb.jpg'
+import zfb from './img/zfb.png'
 import a from '../register/img/a.jpeg'
 
 
@@ -41,7 +41,7 @@ class Login extends Component{
 
     render() {
         const {msg,redirectTo} = this.props
-        if(redirectTo){
+        if(redirectTo === '/'){
             return <Redirect to={redirectTo}/>
         }
         return(

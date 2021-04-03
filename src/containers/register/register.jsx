@@ -63,7 +63,8 @@ class Register extends Component{
         const {flag} = this.state
         const {msg,redirectTo} = this.props
         if(redirectTo){
-            return <Redirect to={redirectTo}/>
+            // 如果redirectTo有值，说明注册成功，跳转到登陆页面进行登陆
+            return <Redirect to={redirectTo} />
         }
         return(
             <div>

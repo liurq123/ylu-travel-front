@@ -2,10 +2,6 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 
 
-import pic1 from "../../containers/selected/img/pic1.jpeg";
-import pic2 from "../../containers/selected/img/pic2.jpg";
-
-
 class ShowList extends Component{
 
     static propTypes = {
@@ -49,23 +45,23 @@ class ShowList extends Component{
                     data.map(function (item,index) {
                         // console.log(index)
                         if (index % 2 === 0){
-                            var url = 'http://localhost:3000/#/listDetail/'+item.rid
+                            var url = 'http://localhost:3000/#/listDetail/'+item.tid
                             return (
                                 <div key={index} className='first' style={{ marginBottom:'3px',marginTop:'2px', float:'left',textAlign:'center',height:'160px',width:wid,borderWidth:'0px',borderStyle:'solid',borderRadius:'10px',borderColor:'rgb(255,255,255)',backgroundColor:'rgb(255,255,255)'}}>
-                                    <a href={url}><img className='fir_img' src={require('./'+item.rimage)} style={{height:'100px',width:wid,borderRadius:'10px'}}/></a>
-                                    <p style={{overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap", margin:'0px 0px 2px 10px',textAlign:'left'}}>{item.rname}</p>
-                                    <p style={{overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap",margin:'0px 0px 2px 10px',textAlign:'left',font:'normal 11px "宋体"'}}>{item.routeIntroduce}</p>
+                                    <a href={url}><img className='fir_img' src={item.cover} style={{height:'100px',width:wid,borderRadius:'10px'}}/></a>
+                                    <p style={{overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap", margin:'0px 0px 2px 10px',textAlign:'left'}}>{item.title}</p>
+                                    <p style={{overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap",margin:'0px 0px 2px 10px',textAlign:'left',font:'normal 11px "宋体"'}}>{item.address}</p>
                                     <p style={{overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap",margin:'0px 0px 2px 10px',textAlign:'left',fontSize:'17px',color:'rgb(255,0,0)'}}>￥{item.price}</p>
                                 </div>
                             )
                         }
                         else {
-                            var url = 'http://localhost:3000/#/listDetail/'+item.rid
+                            var url = 'http://localhost:3000/#/listDetail/'+item.tid
                             return (
                                 <div key={index} className='first' style={{ marginBottom:'3px',marginTop:'2px',float:'right',textAlign:'center',height:'160px',width:wid,borderWidth:'0px',borderStyle:'solid',borderRadius:'10px',borderColor:'rgb(255,255,255)',backgroundColor:'rgb(255,255,255)'}}>
-                                    <a href={url}><img className='fir_img' src={require('./'+item.rimage)} style={{height:'100px',width:wid,borderRadius:'10px'}}/></a>
-                                    <p style={{overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap", margin:'0px 0px 2px 10px',textAlign:'left'}}>{item.rname}</p>
-                                    <p style={{overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap",margin:'0px 0px 2px 10px',textAlign:'left',font:'normal 11px "宋体"'}}>{item.routeIntroduce}</p>
+                                    <a href={url}><img className='fir_img' src={item.cover} style={{height:'100px',width:wid,borderRadius:'10px'}}/></a>
+                                    <p style={{overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap", margin:'0px 0px 2px 10px',textAlign:'left'}}>{item.title}</p>
+                                    <p style={{overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap",margin:'0px 0px 2px 10px',textAlign:'left',font:'normal 11px "宋体"'}}>{item.address}</p>
                                     <p style={{overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap",margin:'0px 0px 2px 10px',textAlign:'left',fontSize:'17px',color:'rgb(255,0,0)'}}>￥{item.price}</p>
                                 </div>
                             )

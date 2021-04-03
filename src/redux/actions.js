@@ -2,7 +2,7 @@
     包含所有action creator 函数
  */
 import {AUTH_SUCCESS,
-ERROR_MSG,RECEIVE_SELETED,RECEIVE_DELICIOUS,RECEIVE_RECOMMEND,GET_DETAIL}
+ERROR_MSG,RECEIVE_SELETED,RECEIVE_DELICIOUS,RECEIVE_RECOMMEND,GET_DETAIL,REGISTER_SUCCESS,SIGN_OUT}
 from './action-types'
 
 
@@ -12,13 +12,16 @@ import {
     reqShowList_Selected,
     reqShowList_Delicious,
     reqShowList_Recommend,
-    reqGet_Detail
+    reqGet_Detail,
+    reqGet_Del_Detail
 } from '../api'
 
 //同步错误消息
 const  errorMsg = (msg) => ({type:ERROR_MSG,data:msg})
-//同步成功响应
+//同步登陆成功响应
 const authSuccess = (user) => ({type:AUTH_SUCCESS,data:user})
+//同步注册成功响应
+const registerSuccess = (user) => ({type:REGISTER_SUCCESS,data:user})
 //同步获取selected列表信息
 const receiveSelected = (reData) => ({type:RECEIVE_SELETED,data:reData})
 //同步获取delicious列表信息
@@ -27,7 +30,8 @@ const receiveDelicious = (reData) => ({type:RECEIVE_DELICIOUS,data:reData})
 const receiveRecommend = (reData) => ({type:RECEIVE_RECOMMEND,data:reData})
 //同步获取详细信息
 const getDetail = (reData) => ({type:GET_DETAIL,data:reData})
-
+//同步退出登陆信息
+const signOut = (redata) => ({type:SIGN_OUT,data:redata})
 
 
 
@@ -105,7 +109,7 @@ export const register = (user) => {
         // console.log(response.json())
         //登陆成功
         if (result.code === 1){
-            dispatch(authSuccess(result.data))
+            dispatch(registerSuccess(result.data))
         }
         else {
             dispatch(errorMsg(result.msg))
@@ -132,7 +136,7 @@ export const showList = (url,param) => {
             const response = await reqShowList_Delicious(param)
             const result = response.data
             console.log(result)
-            dispatch(errorMsg(result.msg))
+            dispatch(receiveDelicious(result.data))
         }
     }
     else {
@@ -147,14 +151,32 @@ export const showList = (url,param) => {
 }
 
 /*
-    异步获取详情页信息
+    异步获取精选详情页信息
  */
 export const detail = (data) => {
 
-    return async dispatch => {
-        const response = await reqGet_Detail(data)
-        const result = response.data
-        console.log(result)
-        dispatch(getDetail(result.data))
+    if('tid' in data){
+        return async dispatch => {
+            const response = await reqGet_Detail(data)
+            const result = response.data
+            console.log(result)
+            dispatch(getDetail(result.data))
+        }
+    }
+    else {
+        return async dispatch => {
+            const response = await reqGet_Del_Detail(data)
+            const result = response.data
+            console.log(result)
+            dispatch(getDetail(result.data))
+        }
+    }
+
+}
+
+export const out = (data) => {
+    return dispatch => {
+        dispatch(signOut(data))
     }
 }
+

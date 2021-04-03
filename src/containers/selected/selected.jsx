@@ -1,10 +1,6 @@
 import React,{Component} from 'react'
 import {connect} from 'react-redux'
 
-import pic1 from './img/pic1.jpeg'
-import pic2 from './img/pic2.jpg'
-import pic3 from './img/pic3.jpg'
-
 
 import ShowList from "../../components/showlist/showlist";
 import LoadMore from "../../components/loadmore/loadmore";
@@ -39,6 +35,7 @@ class Selected extends Component{
         console.log('我到了selected的didmount,开始获取首页数据:')
 
         // window.addEventListener('resize', this.handleResize.bind(this))
+        //判断是否第一次刷新
         if(this.props.showLists.data.length === 0 ){
             this.loadFirstPageData()
         }
@@ -111,120 +108,6 @@ class Selected extends Component{
                 {
                      hasMore ? <LoadMore isLoadingMore={this.state.isLoadingMore} loadMoreFn={this.loadMoreData} />:''
                 }
-
-
-
-                {/*    <div className='first' style={{ marginBottom:'3px',marginTop:'2px', float:'left',textAlign:'center',height:'160px',width:this.state.width,borderWidth:'0px',borderStyle:'solid',borderRadius:'10px',borderColor:'rgb(255,255,255)',backgroundColor:'rgb(255,255,255)'}}>*/}
-                {/*        <a href="#"><img className='fir_img' src={pic1} style={{height:'100px',width:this.state.width,borderRadius:'10px'}}/></a>*/}
-                {/*        <p style={{overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap", margin:'0px 0px 2px 10px',textAlign:'left'}}>高州仙人洞风景区高州仙人洞风景区高州仙人洞风景区</p>*/}
-                {/*        <p style={{overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap",margin:'0px 0px 2px 10px',textAlign:'left',font:'normal 11px "宋体"'}}>高州景点人气榜</p>*/}
-                {/*        <p style={{overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap",margin:'0px 0px 2px 10px',textAlign:'left',fontSize:'17px',color:'rgb(255,0,0)'}}>￥45</p>*/}
-                {/*    </div>*/}
-                {/*    <div className='first' style={{ marginBottom:'3px',marginTop:'2px',float:'right',textAlign:'center',height:'160px',width:this.state.width,borderWidth:'0px',borderStyle:'solid',borderRadius:'10px',borderColor:'rgb(255,255,255)',backgroundColor:'rgb(255,255,255)'}}>*/}
-                {/*        <a href="#"><img className='fir_img' src={pic2} style={{height:'100px',width:this.state.width,borderRadius:'10px'}}/></a>*/}
-                {/*        <p style={{margin:'0px 0px 2px 10px',textAlign:'left'}}>高州仙人洞风景区</p>*/}
-                {/*        <p style={{margin:'0px 0px 2px 10px',textAlign:'left',font:'normal 11px "宋体"'}}>高州景点人气榜</p>*/}
-                {/*        <p style={{margin:'0px 0px 2px 10px',textAlign:'left',fontSize:'17px',color:'rgb(255,0,0)'}}>￥45</p>*/}
-                {/*    </div>*/}
-
-
-
-                {/*    <div className='first' style={{ marginBottom:'3px',marginTop:'2px', float:'left',textAlign:'center',height:'160px',width:this.state.width,borderWidth:'0px',borderStyle:'solid',borderRadius:'10px',borderColor:'rgb(255,255,255)',backgroundColor:'rgb(255,255,255)'}}>*/}
-                {/*        <a href="#"><img className='fir_img' src={pic1} style={{height:'100px',width:this.state.width,borderRadius:'10px'}}/></a>*/}
-                {/*        <p style={{margin:'0px 0px 2px 10px',textAlign:'left'}}>高州仙人洞风景区</p>*/}
-                {/*        <p style={{margin:'0px 0px 2px 10px',textAlign:'left',font:'normal 11px "宋体"'}}>高州景点人气榜</p>*/}
-                {/*        <p style={{margin:'0px 0px 2px 10px',textAlign:'left',fontSize:'17px',color:'rgb(255,0,0)'}}>￥45</p>*/}
-                {/*    </div>*/}
-                {/*    <div className='first' style={{ marginBottom:'3px',marginTop:'2px',float:'right',textAlign:'center',height:'160px',width:this.state.width,borderWidth:'0px',borderStyle:'solid',borderRadius:'10px',borderColor:'rgb(255,255,255)',backgroundColor:'rgb(255,255,255)'}}>*/}
-                {/*        <a href="#"><img className='fir_img' src={pic2} style={{height:'100px',width:this.state.width,borderRadius:'10px'}}/></a>*/}
-                {/*        <p style={{margin:'0px 0px 2px 10px',textAlign:'left'}}>高州仙人洞风景区</p>*/}
-                {/*        <p style={{margin:'0px 0px 2px 10px',textAlign:'left',font:'normal 11px "宋体"'}}>高州景点人气榜</p>*/}
-                {/*        <p style={{margin:'0px 0px 2px 10px',textAlign:'left',fontSize:'17px',color:'rgb(255,0,0)'}}>￥45</p>*/}
-                {/*    </div>*/}
-
-                {/*<div className='first' style={{ marginBottom:'3px',marginTop:'2px', float:'left',textAlign:'center',height:'160px',width:this.state.width,borderWidth:'0px',borderStyle:'solid',borderRadius:'10px',borderColor:'rgb(255,255,255)',backgroundColor:'rgb(255,255,255)'}}>*/}
-                {/*    <a href="#"><img className='fir_img' src={pic1} style={{height:'100px',width:this.state.width,borderRadius:'10px'}}/></a>*/}
-                {/*    <p style={{margin:'0px 0px 2px 10px',textAlign:'left'}}>高州仙人洞风景区</p>*/}
-                {/*    <p style={{margin:'0px 0px 2px 10px',textAlign:'left',font:'normal 11px "宋体"'}}>高州景点人气榜</p>*/}
-                {/*    <p style={{margin:'0px 0px 2px 10px',textAlign:'left',fontSize:'17px',color:'rgb(255,0,0)'}}>￥45</p>*/}
-                {/*</div>*/}
-                {/*<div className='first' style={{ marginBottom:'3px',marginTop:'2px',float:'right',textAlign:'center',height:'160px',width:this.state.width,borderWidth:'0px',borderStyle:'solid',borderRadius:'10px',borderColor:'rgb(255,255,255)',backgroundColor:'rgb(255,255,255)'}}>*/}
-                {/*    <a href="#"><img className='fir_img' src={pic2} style={{height:'100px',width:this.state.width,borderRadius:'10px'}}/></a>*/}
-                {/*    <p style={{margin:'0px 0px 2px 10px',textAlign:'left'}}>高州仙人洞风景区</p>*/}
-                {/*    <p style={{margin:'0px 0px 2px 10px',textAlign:'left',font:'normal 11px "宋体"'}}>高州景点人气榜</p>*/}
-                {/*    <p style={{margin:'0px 0px 2px 10px',textAlign:'left',fontSize:'17px',color:'rgb(255,0,0)'}}>￥45</p>*/}
-                {/*</div>*/}
-
-
-
-                {/*<div className='first' style={{ marginBottom:'3px',marginTop:'2px', float:'left',textAlign:'center',height:'160px',width:this.state.width,borderWidth:'0px',borderStyle:'solid',borderRadius:'10px',borderColor:'rgb(255,255,255)',backgroundColor:'rgb(255,255,255)'}}>*/}
-                {/*    <a href="#"><img className='fir_img' src={pic1} style={{height:'100px',width:this.state.width,borderRadius:'10px'}}/></a>*/}
-                {/*    <p style={{margin:'0px 0px 2px 10px',textAlign:'left'}}>高州仙人洞风景区</p>*/}
-                {/*    <p style={{margin:'0px 0px 2px 10px',textAlign:'left',font:'normal 11px "宋体"'}}>高州景点人气榜</p>*/}
-                {/*    <p style={{margin:'0px 0px 2px 10px',textAlign:'left',fontSize:'17px',color:'rgb(255,0,0)'}}>￥45</p>*/}
-                {/*</div>*/}
-                {/*<div className='first' style={{ marginBottom:'3px',marginTop:'2px',float:'right',textAlign:'center',height:'160px',width:this.state.width,borderWidth:'0px',borderStyle:'solid',borderRadius:'10px',borderColor:'rgb(255,255,255)',backgroundColor:'rgb(255,255,255)'}}>*/}
-                {/*    <a href="#"><img className='fir_img' src={pic2} style={{height:'100px',width:this.state.width,borderRadius:'10px'}}/></a>*/}
-                {/*    <p style={{margin:'0px 0px 2px 10px',textAlign:'left'}}>高州仙人洞风景区</p>*/}
-                {/*    <p style={{margin:'0px 0px 2px 10px',textAlign:'left',font:'normal 11px "宋体"'}}>高州景点人气榜</p>*/}
-                {/*    <p style={{margin:'0px 0px 2px 10px',textAlign:'left',fontSize:'17px',color:'rgb(255,0,0)'}}>￥45</p>*/}
-                {/*</div>*/}
-
-                {/*<div className='first' style={{ marginBottom:'3px',marginTop:'2px', float:'left',textAlign:'center',height:'160px',width:this.state.width,borderWidth:'0px',borderStyle:'solid',borderRadius:'10px',borderColor:'rgb(255,255,255)',backgroundColor:'rgb(255,255,255)'}}>*/}
-                {/*    <a href="#"><img className='fir_img' src={pic1} style={{height:'100px',width:this.state.width,borderRadius:'10px'}}/></a>*/}
-                {/*    <p style={{margin:'0px 0px 2px 10px',textAlign:'left'}}>高州仙人洞风景区</p>*/}
-                {/*    <p style={{margin:'0px 0px 2px 10px',textAlign:'left',font:'normal 11px "宋体"'}}>高州景点人气榜</p>*/}
-                {/*    <p style={{margin:'0px 0px 2px 10px',textAlign:'left',fontSize:'17px',color:'rgb(255,0,0)'}}>￥45</p>*/}
-                {/*</div>*/}
-                {/*<div className='first' style={{ marginBottom:'3px',marginTop:'2px',float:'right',textAlign:'center',height:'160px',width:this.state.width,borderWidth:'0px',borderStyle:'solid',borderRadius:'10px',borderColor:'rgb(255,255,255)',backgroundColor:'rgb(255,255,255)'}}>*/}
-                {/*    <a href="#"><img className='fir_img' src={pic2} style={{height:'100px',width:this.state.width,borderRadius:'10px'}}/></a>*/}
-                {/*    <p style={{margin:'0px 0px 2px 10px',textAlign:'left'}}>高州仙人洞风景区</p>*/}
-                {/*    <p style={{margin:'0px 0px 2px 10px',textAlign:'left',font:'normal 11px "宋体"'}}>高州景点人气榜</p>*/}
-                {/*    <p style={{margin:'0px 0px 2px 10px',textAlign:'left',fontSize:'17px',color:'rgb(255,0,0)'}}>￥45</p>*/}
-                {/*</div>*/}
-
-
-
-                {/*<div className='first' style={{ marginBottom:'3px',marginTop:'2px', float:'left',textAlign:'center',height:'160px',width:this.state.width,borderWidth:'0px',borderStyle:'solid',borderRadius:'10px',borderColor:'rgb(255,255,255)',backgroundColor:'rgb(255,255,255)'}}>*/}
-                {/*    <a href="#"><img className='fir_img' src={pic1} style={{height:'100px',width:this.state.width,borderRadius:'10px'}}/></a>*/}
-                {/*    <p style={{margin:'0px 0px 2px 10px',textAlign:'left'}}>高州仙人洞风景区</p>*/}
-                {/*    <p style={{margin:'0px 0px 2px 10px',textAlign:'left',font:'normal 11px "宋体"'}}>高州景点人气榜</p>*/}
-                {/*    <p style={{margin:'0px 0px 2px 10px',textAlign:'left',fontSize:'17px',color:'rgb(255,0,0)'}}>￥45</p>*/}
-                {/*</div>*/}
-                {/*<div className='first' style={{ marginBottom:'3px',marginTop:'2px',float:'right',textAlign:'center',height:'160px',width:this.state.width,borderWidth:'0px',borderStyle:'solid',borderRadius:'10px',borderColor:'rgb(255,255,255)',backgroundColor:'rgb(255,255,255)'}}>*/}
-                {/*    <a href="#"><img className='fir_img' src={pic2} style={{height:'100px',width:this.state.width,borderRadius:'10px'}}/></a>*/}
-                {/*    <p style={{margin:'0px 0px 2px 10px',textAlign:'left'}}>高州仙人洞风景区</p>*/}
-                {/*    <p style={{margin:'0px 0px 2px 10px',textAlign:'left',font:'normal 11px "宋体"'}}>高州景点人气榜</p>*/}
-                {/*    <p style={{margin:'0px 0px 2px 10px',textAlign:'left',fontSize:'17px',color:'rgb(255,0,0)'}}>￥45</p>*/}
-                {/*</div>*/}
-
-                {/*<div className='first' style={{ marginBottom:'3px',marginTop:'2px', float:'left',textAlign:'center',height:'160px',width:this.state.width,borderWidth:'0px',borderStyle:'solid',borderRadius:'10px',borderColor:'rgb(255,255,255)',backgroundColor:'rgb(255,255,255)'}}>*/}
-                {/*    <a href="#"><img className='fir_img' src={pic1} style={{height:'100px',width:this.state.width,borderRadius:'10px'}}/></a>*/}
-                {/*    <p style={{margin:'0px 0px 2px 10px',textAlign:'left'}}>高州仙人洞风景区</p>*/}
-                {/*    <p style={{margin:'0px 0px 2px 10px',textAlign:'left',font:'normal 11px "宋体"'}}>高州景点人气榜</p>*/}
-                {/*    <p style={{margin:'0px 0px 2px 10px',textAlign:'left',fontSize:'17px',color:'rgb(255,0,0)'}}>￥45</p>*/}
-                {/*</div>*/}
-                {/*<div className='first' style={{ marginBottom:'3px',marginTop:'2px',float:'right',textAlign:'center',height:'160px',width:this.state.width,borderWidth:'0px',borderStyle:'solid',borderRadius:'10px',borderColor:'rgb(255,255,255)',backgroundColor:'rgb(255,255,255)'}}>*/}
-                {/*    <a href="#"><img className='fir_img' src={pic2} style={{height:'100px',width:this.state.width,borderRadius:'10px'}}/></a>*/}
-                {/*    <p style={{margin:'0px 0px 2px 10px',textAlign:'left'}}>高州仙人洞风景区</p>*/}
-                {/*    <p style={{margin:'0px 0px 2px 10px',textAlign:'left',font:'normal 11px "宋体"'}}>高州景点人气榜</p>*/}
-                {/*    <p style={{margin:'0px 0px 2px 10px',textAlign:'left',fontSize:'17px',color:'rgb(255,0,0)'}}>￥45</p>*/}
-                {/*</div>*/}
-
-
-
-                {/*<div className='first' style={{ marginBottom:'3px',marginTop:'2px', float:'left',textAlign:'center',height:'160px',width:this.state.width,borderWidth:'0px',borderStyle:'solid',borderRadius:'10px',borderColor:'rgb(255,255,255)',backgroundColor:'rgb(255,255,255)'}}>*/}
-                {/*    <a href="#"><img className='fir_img' src={pic1} style={{height:'100px',width:this.state.width,borderRadius:'10px'}}/></a>*/}
-                {/*    <p style={{margin:'0px 0px 2px 10px',textAlign:'left'}}>高州仙人洞风景区</p>*/}
-                {/*    <p style={{margin:'0px 0px 2px 10px',textAlign:'left',font:'normal 11px "宋体"'}}>高州景点人气榜</p>*/}
-                {/*    <p style={{margin:'0px 0px 2px 10px',textAlign:'left',fontSize:'17px',color:'rgb(255,0,0)'}}>￥45</p>*/}
-                {/*</div>*/}
-                {/*<div className='first' style={{ marginBottom:'3px',marginTop:'2px',float:'right',textAlign:'center',height:'160px',width:this.state.width,borderWidth:'0px',borderStyle:'solid',borderRadius:'10px',borderColor:'rgb(255,255,255)',backgroundColor:'rgb(255,255,255)'}}>*/}
-                {/*    <a href="#"><img className='fir_img' src={pic2} style={{height:'100px',width:this.state.width,borderRadius:'10px'}}/></a>*/}
-                {/*    <p style={{margin:'0px 0px 2px 10px',textAlign:'left'}}>高州仙人洞风景区</p>*/}
-                {/*    <p style={{margin:'0px 0px 2px 10px',textAlign:'left',font:'normal 11px "宋体"'}}>高州景点人气榜</p>*/}
-                {/*    <p style={{margin:'0px 0px 2px 10px',textAlign:'left',fontSize:'17px',color:'rgb(255,0,0)'}}>￥45</p>*/}
-                {/*</div>*/}
 
             </div>
         )
