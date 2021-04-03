@@ -18,6 +18,7 @@ class Login extends Component{
         username:'',
         password:'',
         checkCode:'',
+        aaaL:''
     }
 
     handleChange = (name,value) => {
